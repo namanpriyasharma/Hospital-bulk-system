@@ -9,7 +9,7 @@ An enterprise-grade, high-performance Bulk Processing System that integrates wit
 
 ---
 
-## 🏗️ Architecture & Processing Workflow
+## Architecture & Processing Workflow
 
 The system is designed around non-blocking asynchronous event loops and bounded concurrency to deliver sub-second bulk processing times for up to 20 hospital records per upload.
 
@@ -46,7 +46,7 @@ sequenceDiagram
 
 ---
 
-## ✨ Features Implemented
+## Features Implemented
 
 ### 1. Core Requirements
 - **Multipart CSV Upload:** `POST /hospitals/bulk` parses uploaded CSVs directly from memory without writing temporary files to disk.
@@ -56,20 +56,20 @@ sequenceDiagram
 - **Standardized Response:** Fully matches the schema required by the assignment specification.
 
 ### 2. Optional Tasks / Bonus Points Completed
-- **🚀 6.1 Performance Optimization:** Built using `httpx.AsyncClient` with connection pooling and `asyncio.Semaphore` concurrency limiting. Requests are dispatched concurrently over persistent HTTP/2 keep-alive connections rather than sequentially blocking threads.
-- **📊 6.2 Progress Tracking:**
+- ** 6.1 Performance Optimization:** Built using `httpx.AsyncClient` with connection pooling and `asyncio.Semaphore` concurrency limiting. Requests are dispatched concurrently over persistent HTTP/2 keep-alive connections rather than sequentially blocking threads.
+- ** 6.2 Progress Tracking:**
   - **Polling:** `GET /hospitals/bulk/{batch_id}/status` provides real-time progress percentages and row outcomes.
   - **Live WebSockets:** `/ws/batch/{batch_id}` streams instant JSON updates as each individual hospital record finishes processing.
-- **🔄 6.3 Resume Capability:** `POST /hospitals/bulk/{batch_id}/resume` scans the batch record for failed items and re-attempts creation only for those rows, subsequently activating the batch once resolved.
-- **🔍 6.4 CSV Validation Endpoint:** `POST /hospitals/bulk/validate` lets clients pre-flight validate CSV headers, syntax, and row limits before dispatching the actual creation.
-- **🧪 6.5 Comprehensive Automated Testing:** Full test suite powered by `pytest` and `pytest-asyncio` covering happy paths, boundary conditions, partial failures, resume flows, and validation rules.
+- ** 6.3 Resume Capability:** `POST /hospitals/bulk/{batch_id}/resume` scans the batch record for failed items and re-attempts creation only for those rows, subsequently activating the batch once resolved.
+- ** 6.4 CSV Validation Endpoint:** `POST /hospitals/bulk/validate` lets clients pre-flight validate CSV headers, syntax, and row limits before dispatching the actual creation.
+- ** 6.5 Comprehensive Automated Testing:** Full test suite powered by `pytest` and `pytest-asyncio` covering happy paths, boundary conditions, partial failures, resume flows, and validation rules.
 
 ---
 
-## 📋 API Specification
+## API Specification
 
 Interactive Swagger UI documentation is automatically available at:  
-👉 **`http://localhost:8000/docs`**
+**`http://localhost:8000/docs`**
 
 ### Key Endpoints
 
@@ -121,7 +121,7 @@ Interactive Swagger UI documentation is automatically available at:
 
 ---
 
-## 🛠️ Local Development & Setup
+##  Local Development & Setup
 
 ### Prerequisites
 * Python 3.10+
@@ -159,7 +159,7 @@ Open **`http://localhost:8000/docs`** in your browser.
 
 ---
 
-## 🧪 Running the Test Suite
+##  Running the Test Suite
 
 Run the full automated test suite with coverage report:
 ```bash
@@ -175,7 +175,7 @@ pytest tests/test_status_and_resume.py -v
 
 ---
 
-## 🐳 Docker & Containerization
+## Docker & Containerization
 
 ### Run with Docker Compose
 ```bash
@@ -196,7 +196,7 @@ docker-compose down
 
 ---
 
-## 🚀 Online Deployment Guide (Render)
+##  Online Deployment Guide (Render)
 
 This repository includes a native **`render.yaml`** blueprint for instant 1-click deployment:
 
@@ -212,7 +212,7 @@ This repository includes a native **`render.yaml`** blueprint for instant 1-clic
 
 ---
 
-## 📂 Project Directory Structure
+##  Project Directory Structure
 
 ```text
 hospital-bulk-system/
