@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  hospital-bulk-system:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hospital-bulk-system
+    ports:
+      - "8000:8000"
+    environment:
+      - DIRECTORY_API_BASE_URL=https://hospital-directory.onrender.com
+      - MAX_CSV_RECORDS=20
+      - REQUEST_TIMEOUT_SECONDS=30.0
+      - MAX_CONCURRENT_REQUESTS=10
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 30s
+      timeout: 5s
+      retries: 3

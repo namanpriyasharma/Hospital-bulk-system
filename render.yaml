@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hospital-bulk-system
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DIRECTORY_API_BASE_URL
+        value: https://hospital-directory.onrender.com
+      - key: MAX_CSV_RECORDS
+        value: "20"
+      - key: REQUEST_TIMEOUT_SECONDS
+        value: "30.0"
+      - key: MAX_CONCURRENT_REQUESTS
+        value: "10"
